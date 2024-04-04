@@ -40,3 +40,19 @@
 .read-the-docs {
   color: #888;
 }
+.posts{
+  color: brown;
+  
+}
+.postText{
+  color: black;
+  background-color: darkkhaki;
+  max-width: 60%;
+  margin:auto;
+  border-radius: 5px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: aqua;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
