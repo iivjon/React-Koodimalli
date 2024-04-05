@@ -56,3 +56,11 @@
   margin-top: 2%;
   margin-bottom: 2%;
 }
+.customerDetails{
+  background-color: chocolate;
+  border-style: solid;
+  width: 85%;
+  margin: auto;
+  margin-bottom: 50px;
+  border-radius: 30px;
+}

@@ -3,6 +3,7 @@ import './App.css'
 import Laskuri from './laskuri.jsx'
 import Viesti from './viesti.jsx'
 import Posts from './Posts.jsx'
+import CustomerList from './CustomerList.jsx'
 
 const App=()=> {
 //App komponentin tila
@@ -18,6 +19,9 @@ const App=()=> {
   return (
     <div className='app'>
       <h1>Hello from react!</h1>
+      <div>
+        <CustomerList />
+      </div>
       <div>
         <Posts />
       </div>

@@ -15,7 +15,6 @@ const Posts = () => {
   } , []
   )
 
-
   return (
     <>
         <h2>Posts from typicode</h2>  
