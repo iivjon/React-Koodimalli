@@ -4,11 +4,16 @@ import Laskuri from './laskuri.jsx'
 import Viesti from './viesti.jsx'
 import Posts from './Posts.jsx'
 import CustomerList from './CustomerList.jsx'
+import Message from './Message.jsx'
 
 const App=()=> {
 //App komponentin tila
   
   const [showLaskuri, setshowLaskuri] = useState(false)
+//Statet messagen näyttämistä varten
+  const [showMessage, setshowMessage] = useState(false)
+  const [message, setMessage] = useState('')
+  const [isPositive, setIsPositive] = useState(false)
 
   
   
@@ -19,8 +24,9 @@ const App=()=> {
   return (
     <div className='app'>
       <h1>Hello from react!</h1>
+     {showMessage && <Message message={message} isPositive={isPositive} /> }
       <div>
-        <CustomerList />
+        <CustomerList setIsPositive={setIsPositive} setMessage={setMessage} setshowMessage={setshowMessage} />
       </div>
       <div>
         <Posts />
