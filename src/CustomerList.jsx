@@ -3,24 +3,32 @@ import { useState, useEffect } from 'react'
 import CustomerService from './services/Customer'
 import Customer from './Customer'
 import CustomerAdd from './CustomerAdd'
+import CustomerEdit from './CustomerEdit'
 //props otettu vastaan suoraan nimellä
 const CustomerList = ({setIsPositive,setshowMessage,setMessage}) => {
   
+  //Komponenttien tilojen määritys
     const [customers, setCustomers] = useState([])
-
     const [showCustomers, setshowCustomers] = useState(false)
-
     const[lisäystila, setLisäystila] = useState(false)
-
+    const[muokkaustila, setMuokkaustila] = useState(false)
     const[reload, reloadNow] = useState(false)
+    const[muokattavaCustomer, setMuokattavaCustomer] = useState(false)
 
+    //Ajetaan aina kun sivu latautuu
   useEffect(()=>{
     CustomerService.getAll()
     .then(data => {
         setCustomers(data)
     })
-  } , [lisäystila, reload]
+    //Ajetaan kun joku näistä muuttuu
+  } , [lisäystila, reload, muokkaustila]
   )
+
+  const editCustomer = (customer) => {
+    setMuokattavaCustomer(customer)
+    setMuokkaustila(true)
+  }
 
   return (
     <>
@@ -47,10 +55,16 @@ const CustomerList = ({setIsPositive,setshowMessage,setMessage}) => {
         setIsPositive={setIsPositive} setMessage={setMessage} setshowMessage={setshowMessage}
          />}
 
+        {muokkaustila && <CustomerEdit setMuokkaustila={setMuokkaustila}
+        setIsPositive={setIsPositive} setMessage={setMessage} setshowMessage={setshowMessage}
+        muokattavaCustomer={muokattavaCustomer}
+         />}
+
         {
             showCustomers && customers && customers.map(c =>(
                 <Customer key={c.customerId} customer={c} reloadNow={reloadNow} reload={reload}
-                setIsPositive={setIsPositive} setshowMessage={setshowMessage} setMessage={setMessage} />
+                setIsPositive={setIsPositive} setshowMessage={setshowMessage} setMessage={setMessage}
+                editCustomer={editCustomer} />
             ))
         }
         

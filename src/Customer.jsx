@@ -2,7 +2,7 @@ import './App.css'
 import { useState } from 'react'
 import CustomerService from './services/Customer'
 //props otettu vastaan suoraan nimellä
-const Customer = ({customer,setIsPositive,setshowMessage,setMessage, reload, reloadNow}) => {
+const Customer = ({customer, editCustomer, setIsPositive,setshowMessage,setMessage, reload, reloadNow}) => {
 
     const [showDetails, setshowDetails] = useState(false)
 
@@ -66,7 +66,7 @@ const Customer = ({customer,setIsPositive,setshowMessage,setMessage, reload, rel
         {showDetails && <div className='customerDetails'>
             <h3>{customer.companyName} </h3>
             <button onClick={() => deleteCustomer(customer)}>Delete</button>
-            <button>Edit</button>
+            <button onClick={() => editCustomer(customer)}>Edit</button>
             <table>
                 <thead>
                     <tr>
