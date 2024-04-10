@@ -60,8 +60,15 @@ const CustomerList = ({setIsPositive,setshowMessage,setMessage}) => {
         muokattavaCustomer={muokattavaCustomer}
          />}
 
-        {
+        {/* {
             showCustomers && customers && customers.map(c =>(
+                <Customer key={c.customerId} customer={c} reloadNow={reloadNow} reload={reload}
+                setIsPositive={setIsPositive} setshowMessage={setshowMessage} setMessage={setMessage}
+                editCustomer={editCustomer} />
+            ))
+        } */}
+        {
+               !muokkaustila &&  showCustomers && customers && customers.map(c =>(
                 <Customer key={c.customerId} customer={c} reloadNow={reloadNow} reload={reload}
                 setIsPositive={setIsPositive} setshowMessage={setshowMessage} setMessage={setMessage}
                 editCustomer={editCustomer} />
