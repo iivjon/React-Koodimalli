@@ -10,10 +10,11 @@ const CustomerList = ({setIsPositive,setshowMessage,setMessage}) => {
   //Komponenttien tilojen määritys
     const [customers, setCustomers] = useState([])
     const [showCustomers, setshowCustomers] = useState(false)
-    const[lisäystila, setLisäystila] = useState(false)
-    const[muokkaustila, setMuokkaustila] = useState(false)
-    const[reload, reloadNow] = useState(false)
-    const[muokattavaCustomer, setMuokattavaCustomer] = useState(false)
+    const [lisäystila, setLisäystila] = useState(false)
+    const [muokkaustila, setMuokkaustila] = useState(false)
+    const [reload, reloadNow] = useState(false)
+    const [muokattavaCustomer, setMuokattavaCustomer] = useState(false)
+    const [search, setSearch] = useState("")
 
     //Ajetaan aina kun sivu latautuu
   useEffect(()=>{
@@ -24,6 +25,11 @@ const CustomerList = ({setIsPositive,setshowMessage,setMessage}) => {
     //Ajetaan kun joku näistä muuttuu
   } , [lisäystila, reload, muokkaustila]
   )
+ //Hakukenttä onChange tapahtumakäsittelijä
+  const handleSearchInputChange = (event) => {
+    setshowCustomers(true)
+    setSearch(event.target.value.toLowerCase())
+  }
 
   const editCustomer = (customer) => {
     setMuokattavaCustomer(customer)
@@ -49,7 +55,13 @@ const CustomerList = ({setIsPositive,setshowMessage,setMessage}) => {
         <h1><nobr style={{ cursor : 'pointer'}}
         onClick={() => setshowCustomers(!showCustomers)}>Customers</nobr>
 
+
+
         {!lisäystila && <button className='nappi' onClick={() => setLisäystila(true)}>Add new</button>}</h1>
+
+        {!lisäystila && !muokkaustila &&
+        <input placeholder='Search by company name' value={search} onChange={handleSearchInputChange}>
+          </input>} 
 
         {lisäystila && <CustomerAdd setLisäystila={setLisäystila}
         setIsPositive={setIsPositive} setMessage={setMessage} setshowMessage={setshowMessage}
@@ -60,19 +72,19 @@ const CustomerList = ({setIsPositive,setshowMessage,setMessage}) => {
         muokattavaCustomer={muokattavaCustomer}
          />}
 
-        {/* {
-            showCustomers && customers && customers.map(c =>(
-                <Customer key={c.customerId} customer={c} reloadNow={reloadNow} reload={reload}
-                setIsPositive={setIsPositive} setshowMessage={setshowMessage} setMessage={setMessage}
-                editCustomer={editCustomer} />
-            ))
-        } */}
         {
-               !muokkaustila &&  showCustomers && customers && customers.map(c =>(
+                !lisäystila && !muokkaustila &&  showCustomers && customers && customers.map(c =>
+                  {
+                    const lowerCaseName = c.companyName.toLowerCase()
+                    if (lowerCaseName.indexOf(search)> -1){
+                  return(
                 <Customer key={c.customerId} customer={c} reloadNow={reloadNow} reload={reload}
                 setIsPositive={setIsPositive} setshowMessage={setshowMessage} setMessage={setMessage}
                 editCustomer={editCustomer} />
-            ))
+            )
+          }
+          }
+          )
         }
         
 
