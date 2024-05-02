@@ -1,35 +1,68 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import './App.css'
 import Laskuri from './laskuri.jsx'
 import Posts from './Posts.jsx'
 import CustomerList from './CustomerList.jsx'
+import UsersList from './UsersList.jsx'
+import ProductList from './ProductList.jsx'
 import Message from './Message.jsx'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import Login from './Login.jsx'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+
+
 
 const App=()=> {
 //App komponentin tila
   
  // const [showLaskuri, setshowLaskuri] = useState(false)
 //Statet messagen näyttämistä varten
-  const [showMessage, setShowMessage] = useState('')
+  const [showMessage, setshowMessage] = useState('')
   const [message, setMessage] = useState('')
   const [isPositive, setIsPositive] = useState(true)
+  const [loggedInUser, setLoggedInUser] = useState('')
 
-  
+  const [adminUser, setAdminUser] = useState(false)
+
+  useEffect(() => {
+    let storedUser = localStorage.getItem('username')
+    if (storedUser !== null){
+      setLoggedInUser(storedUser)
+    }
+  },[])
+
+  useEffect(() => {
+    let storedAdmin = localStorage.getItem('accesslevelId')
+    if (storedAdmin == 1){
+      setAdminUser(true)
+    }
+  },[])
+
+  //Logout napin tapahtumakäsittelijä
+  const logout = () => {
+    localStorage.clear()
+    setLoggedInUser('')
+    setAdminUser(false)
+  }
   
    return (
      <div className="App">
+       {!loggedInUser && !adminUser &&  <Login setMessage={setMessage} setIsPositive={setIsPositive} 
+       setshowMessage={setshowMessage} setLoggedInUser={setLoggedInUser} setAdminUser={setAdminUser} />}
+
+      { loggedInUser && 
        <Router>
       
            <Navbar bg="dark" variant="dark">
              <Nav className="mr-auto">
                  <Nav.Link href='/customers'>Customers</Nav.Link>
                  <Nav.Link href='/posts'>Some higlights</Nav.Link>
-                 <Nav.Link href='/users'>Users</Nav.Link>
+                { adminUser &&  <Nav.Link href='/users'>Users</Nav.Link> }
                  <Nav.Link href='/laskuri'>Laskuri</Nav.Link>
+                 <Nav.Link href='/product'>Product</Nav.Link>
+                 <button onClick={() => logout()}>Logout</button>
              </Nav>
            </Navbar>
                         
@@ -40,13 +73,18 @@ const App=()=> {
          <Routes>
            <Route path="/customers"
            element={<CustomerList setMessage={setMessage} setIsPositive={setIsPositive} 
-           setShowMessage={setShowMessage} />}>
+           setshowMessage={setshowMessage} />}>
            </Route>
 
-           {/* <Route path="/users"
-           element={<UserList setMessage={setMessage} setIsPositive={setIsPositive} 
-           setShowMessage={setShowMessage} />}>
-           </Route> */}
+          { adminUser && <Route path="/users"
+           element={<UsersList setMessage={setMessage} setIsPositive={setIsPositive} 
+           setshowMessage={setshowMessage} />}>
+           </Route> } 
+
+           <Route path="/product"
+           element={<ProductList setMessage={setMessage} setIsPositive={setIsPositive} 
+           setshowMessage={setshowMessage} />}>
+           </Route> 
 
            <Route path="/posts"
            element={<Posts />}>
@@ -58,6 +96,7 @@ const App=()=> {
         
          </Routes>
        </Router>
+       } 
      </div>
    )
 

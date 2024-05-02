@@ -67,25 +67,25 @@ const CustomerEdit = ({setMuokkaustila, setIsPositive,setshowMessage,setMessage,
 
         <form onSubmit={handleSubmit}>
         <div><label>Customer ID</label></div>
-         <div><input type='text' value={newCustomerId} disabled  /></div>
+         <div><input className='lomake' type='text' value={newCustomerId} disabled  /></div>
          <div><label>Company name</label></div>
-         <div><input type='text' value={newCompanyName} onChange={({target}) => setNewCompanyName(target.value)} placeholder='Company Name' required /></div>
+         <div><input className='lomake' type='text' value={newCompanyName} onChange={({target}) => setNewCompanyName(target.value)} placeholder='Company Name' required /></div>
          <div><label>Contact name</label></div>
-         <div><input type='text' value={newContactName} onChange={({target}) => setNewContactName(target.value)} placeholder='Contact Name' /></div>
+         <div><input className='lomake' type='text' value={newContactName} onChange={({target}) => setNewContactName(target.value)} placeholder='Contact Name' /></div>
          <div><label>Company title</label></div>       
-         <div><input type='text' value={newContactTitle} onChange={({target}) => setNewContactTitle(target.value)} placeholder='Contact Title' /></div>
+         <div><input className='lomake' type='text' value={newContactTitle} onChange={({target}) => setNewContactTitle(target.value)} placeholder='Contact Title' /></div>
          <div><label>Address</label></div>
-         <div><input type='text' value={newAddress} onChange={({target}) => setNewAddress(target.value)} placeholder='Address' /></div>
+         <div><input className='lomake' type='text' value={newAddress} onChange={({target}) => setNewAddress(target.value)} placeholder='Address' /></div>
          <div><label>City</label></div>
-         <div><input type='text' value={newCity} onChange={({target}) => setNewCity(target.value)} placeholder='City' /></div>
+         <div><input className='lomake' type='text' value={newCity} onChange={({target}) => setNewCity(target.value)} placeholder='City' /></div>
          <div><label>Postalcode</label></div>
-         <div><input type='text' value={newPostalCode} onChange={({target}) => setNewPostalCode(target.value)} placeholder='Postal Code' /></div>
+         <div><input className='lomake' type='text' value={newPostalCode} onChange={({target}) => setNewPostalCode(target.value)} placeholder='Postal Code' /></div>
          <div><label>Country</label></div>
-         <div><input type='text' value={newCountry} onChange={({target}) => setNewCountry(target.value)} placeholder='Country' /></div>
+         <div><input className='lomake' type='text' value={newCountry} onChange={({target}) => setNewCountry(target.value)} placeholder='Country' /></div>
          <div><label>Phone</label></div>
-         <div><input type='text' value={newPhone} onChange={({target}) => setNewPhone(target.value)} placeholder='Phone' /></div>
+         <div><input className='lomake' type='text' value={newPhone} onChange={({target}) => setNewPhone(target.value)} placeholder='Phone' /></div>
          <div><label>Fax</label></div>
-         <div><input type='text' value={newFax} onChange={({target}) => setNewFax(target.value)} placeholder='Fax' /></div>
+         <div><input className='lomake' type='text' value={newFax} onChange={({target}) => setNewFax(target.value)} placeholder='Fax' /></div>
 
             <input type='submit' value='save' />
             <input type='button' value='back' onClick={() => setMuokkaustila(false)} />

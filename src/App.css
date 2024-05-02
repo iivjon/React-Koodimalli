@@ -100,3 +100,33 @@
   width: 70%;
   margin-left: 15%;
 }
+.userDetails{
+  background-color: rgb(95, 162, 54);
+  border-style: solid;
+  width: 100%;
+  margin: auto;
+  margin-bottom: 50px;
+  border-radius: 15px;
+}
+
+.delete{
+  background-color: red;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 5px;
+}
+.edit{
+  background-color: rgb(246, 246, 112);
+  font-size: 20px;
+  font-weight: bold;
+  padding: 5px;
+}
+.lomake{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}

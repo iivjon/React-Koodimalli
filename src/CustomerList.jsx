@@ -18,9 +18,14 @@ const CustomerList = ({setIsPositive,setshowMessage,setMessage}) => {
 
     //Ajetaan aina kun sivu latautuu
   useEffect(()=>{
-    CustomerService.getAll()
-    .then(data => {
-        setCustomers(data)
+
+    const token = localStorage.getItem('token')
+      CustomerService
+        .setToken(token)
+        
+      CustomerService.getAll()
+        .then(data => {
+          setCustomers(data)
     })
     //Ajetaan kun joku näistä muuttuu
   } , [lisäystila, reload, muokkaustila]

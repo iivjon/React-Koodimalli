@@ -1,21 +1,21 @@
 import './App.css'
 import { useState } from 'react'
-import CustomerService from './services/Customer'
+import UserService from './services/User'
 //props otettu vastaan suoraan nimellä
-const Customer = ({customer, editCustomer, setIsPositive,setshowMessage,setMessage, reload, reloadNow}) => {
+const User = ({user, editUser, setIsPositive,setshowMessage,setMessage, reload, reloadNow}) => {
 
     const [showDetails, setshowDetails] = useState(false)
 
-    const deleteCustomer =(customer) => {
-
-        let vastaus = window.confirm(`Remove customer ${customer.companyName}`)
+    const deleteUser =(user) => {
+        alert("Poista " + user.FirstName)
+        let vastaus = window.confirm(`Remove user ${user.FirstName}`)
 
         if (vastaus === true){
         
-        CustomerService.remove(customer.customerId)
+        UserService.remove(user.userId)
         .then(res => {
             if (res.status === 200){
-                setMessage(`Removed customer ${customer.companyName}`)
+                setMessage(`Removed user ${user.firstName}`)
                 setIsPositive(true)
                 setshowMessage(true)
                 window.scrollBy(0,-10000)//scrollataan sivu ylös
@@ -56,34 +56,29 @@ const Customer = ({customer, editCustomer, setIsPositive,setshowMessage,setMessa
 
   return (
     <div className='custDiv'>
-        {/* <h4 onMouseEnter={() => setshowDetails(true)}
-        onMouseLeave={() => setshowDetails(false)}>
-            {customer.companyName}</h4> */}
 
           <h4 onClick={() => setshowDetails(!showDetails)}>
-            {customer.companyName}</h4>
+            {user.firstName}</h4>
 
-        {showDetails && <div className='customerDetails'>
-            <h3>{customer.companyName} </h3>
-            <button className='delete' onClick={() => deleteCustomer(customer)}>Delete</button>
-            <button className='edit' onClick={() => editCustomer(customer)}>Edit</button>
+        {showDetails && <div className='userDetails'>
+            
+            <button className='delete' onClick={() => deleteUser(user)}>Delete</button>
+            <button className='edit' onClick={() => editUser(user)}>Edit</button>
             <table>
                 <thead>
                     <tr>
-                        <th>Contact person</th>
-                        <th>Phone</th>
-                        <th>Address</th>
-                        <th>City</th>
-                        <th>Country</th>
+                     <th>Firstname</th>                     
+                     <th>Lastname</th>
+                     <th>Email</th>
+                     <th>Accesslevel</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>{customer.contactName}</td>
-                        <td>{customer.phone}</td>
-                        <td>{customer.address}</td>
-                        <td>{customer.city}</td>
-                        <td>{customer.country}</td>
+                         <td>{user.firstName}</td>                         
+                         <td>{user.lastName}</td>
+                         <td>{user.email}</td>
+                         <td>{user.acceslevelId}</td>
                     </tr>
                 </tbody>
                 </table>
@@ -92,4 +87,4 @@ const Customer = ({customer, editCustomer, setIsPositive,setshowMessage,setMessa
   )
 }
 
-export default Customer
+export default User
