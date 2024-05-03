@@ -62,7 +62,7 @@ const App=()=> {
                 { adminUser &&  <Nav.Link href='/users'>Users</Nav.Link> }
                  <Nav.Link href='/laskuri'>Laskuri</Nav.Link>
                  <Nav.Link href='/product'>Product</Nav.Link>
-                 <button onClick={() => logout()}>Logout</button>
+                 <button className='logout' onClick={() => logout()}>Logout</button>
              </Nav>
            </Navbar>
                         

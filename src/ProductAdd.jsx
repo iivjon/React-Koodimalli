@@ -75,9 +75,9 @@ const ProductAdd = ({setLisäystila, setIsPositive,setshowMessage,setMessage}) =
          <div><input className='lomake' type='number' value={newUnitsOnOrder} onChange={({target}) => setNewUnitsOnOrder(target.value)} placeholder='UnitsOnOrder' /></div>
          <div><input className='lomake' type='number' value={newReorderLevel} onChange={({target}) => setNewReorderLevel(target.value)} placeholder='Reorderlevel' /></div>
          <div><input className='lomake' type='text' value={newDiscontinued} onChange={({target}) => setNewDiscontinued(target.value)} placeholder='Discontinued' readOnly /></div>
-
-            <input type='submit' value='save' />
-            <input type='button' value='back' onClick={() => setLisäystila(false)} />
+        
+            <input className='save' type='submit' value='save' />
+            <input className='back' type='button' value='back' onClick={() => setLisäystila(false)} />
         </form>
 
 

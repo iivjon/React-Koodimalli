@@ -71,15 +71,13 @@ const UserAdd = ({setLisäystila, setIsPositive,setshowMessage,setMessage}) => {
          <div><input className='lomake' type='email' value={newEmail} onChange={({target}) => setNewEmail(target.value)} placeholder='Email' /></div>
          <div><input className='lomake' type='number' value={newAccesslevelId} onChange={({target}) => setNewAccesslevelId(target.value)} placeholder='Access level' /></div>
          <div><input className='lomake' type='text' value={newUsername} onChange={({target}) => setNewUsername(target.value)} placeholder='Username' /></div>
-        {/* <div><input type='password' value={newPassword} onChange={({target}) => setNewPassword(target.value)} placeholder='Password' /></div>*/}
 
          <div><input className='lomake' type='password' value={newPassword} onChange={handlePassword} placeholder='Password' /></div>
-
          <div><input className='lomake' type='password' value={newPasswordCheck}onChange={passwordCheck}  placeholder='Password check' /></div>
          <div><p>{newPassword === newPasswordCheck ? 'Passwords match' : 'Passwords does not match'}</p></div>
-
-            <input type='submit' value='save' />
-            <input type='button' value='back' onClick={() => setLisäystila(false)} />
+         
+            <input className='save' type='submit' value='save' disabled={newPassword !== newPasswordCheck} />
+            <input className='back' type='button' value='back' onClick={() => setLisäystila(false)} />
         </form>
 
 

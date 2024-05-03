@@ -81,8 +81,8 @@ const CustomerAdd = ({setLisäystila, setIsPositive,setshowMessage,setMessage}) 
          <div><input className='lomake' type='text' value={newPhone} onChange={({target}) => setNewPhone(target.value)} placeholder='Phone' /></div>
          <div><input className='lomake' type='text' value={newFax} onChange={({target}) => setNewFax(target.value)} placeholder='Fax' /></div>
 
-            <input type='submit' value='save' />
-            <input type='button' value='back' onClick={() => setLisäystila(false)} />
+            <input className='save' type='submit' value='save' />
+            <input className='back' type='button' value='back' onClick={() => setLisäystila(false)} />
         </form>
 
 

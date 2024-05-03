@@ -58,11 +58,11 @@ const Login = ({setMessage,setshowMessage,setIsPositive, setLoggedInUser, setAdm
         setPassword("")
     }
 
-    const adminCheck = () => {
+   /* const adminCheck = () => {
         alert(userForAuth.accesslevelId)
             setAminUser(true)
         
-    }
+    }*/
 
   return (
     <div id='loginWindow'>
@@ -71,12 +71,12 @@ const Login = ({setMessage,setshowMessage,setIsPositive, setLoggedInUser, setAdm
 
         <form onSubmit={handleSubmit}>
 
-         <div><input type='text' value={username} onChange={({target}) => setUsername(target.value)} placeholder='Username' /></div>
-         <div><input type='password' value={password} onChange={({target}) => setPassword(target.value)} placeholder='Password' /></div>
+         <div><input className='lomake' type='text' value={username} onChange={({target}) => setUsername(target.value)} placeholder='Username' /></div>
+         <div><input className='lomake' type='password' value={password} onChange={({target}) => setPassword(target.value)} placeholder='Password' /></div>
 
-             <input type='submit' value='Login'  />
-            <input type='button' value='Empty' onClick={() => emptyFields()} />
-            <input type='button' value='admin' onClick={() => adminCheck()} />{/* tähän lisätty adminCheck */}
+             <input className='save' type='submit' value='Logini'  />
+            <input className='empty' type='button' value='Empty' onClick={() => emptyFields()} />
+           {/* <input type='button' value='admin' onClick={() => adminCheck()} /> tähän lisätty adminCheck */}
         </form>
 
 

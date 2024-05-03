@@ -5,6 +5,7 @@
   text-align: center;
 }
 
+
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -129,4 +130,40 @@
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
+}
+
+.save{
+  background-color: rgb(67, 171, 63);
+  font-size: 20px;
+  font-weight: bold;
+  padding: 5px;
+  margin: 2px;
+  border-radius: 5px;
+}
+
+.back{
+  background-color: rgb(205, 123, 76);
+  font-size: 20px;
+  font-weight: bold;
+  padding: 5px;
+  margin: 2px;
+  border-radius: 5px;
+}
+
+.empty{
+  background-color: rgb(136, 89, 175);
+  font-size: 20px;
+  font-weight: bold;
+  padding: 5px;
+  margin: 2px;
+  border-radius: 5px;
+}
+
+.logout{
+  background-color: rgb(231, 70, 70);
+  font-size: 12px;
+  font-weight: bold;
+  padding: 5px;
+  margin: 2px;
+  border-radius: 5px;
 }

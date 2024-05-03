@@ -1,6 +1,7 @@
 import axios from "axios"
 
-const baseUrl = "https://localhost:7136/api/Customers"
+//const baseUrl = "https://localhost:7136/api/Customers"
+const url = "https://nordwindrestapi.azurewebsites.net/api/Customers"
 
 let token = null
 
@@ -14,7 +15,7 @@ const getAll = () => {
      const config = {
          headers: { Authorization: token },
      }
-    const request = axios.get(baseUrl, config)
+    const request = axios.get(url, config)
     return request.then(response => response.data)
 }
 
@@ -22,20 +23,20 @@ const create = newCustomer => {
     const config = {
         headers: { Authorization: token },
     }
-    return axios.post(baseUrl,newCustomer, config)
+    return axios.post(url,newCustomer, config)
 }
 
 const remove = id => {
     const config = {
         headers: { Authorization: token },
     }
-    return axios.delete(`${baseUrl}/${id}`, config)
+    return axios.delete(`${url}/${id}`, config)
 }
 
 const update = object => {
     const config = {
         headers: { Authorization: token },
     }
-    return axios.put(`${baseUrl}/${object.customerId}`,object, config)
+    return axios.put(`${url}/${object.customerId}`,object, config)
 }
 export default{getAll, create, remove, update, setToken}
