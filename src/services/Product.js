@@ -1,7 +1,7 @@
 import axios from "axios"
 
 //const baseUrl = "https://localhost:7136/api/Product"
-const url = "https://nordwindrestapi.azurewebsites.net/api/Product"
+const url = "https://nordwindrestapi.azurewebsites.net/api/product"
 
 const getAll = () => {
     // const config = {
